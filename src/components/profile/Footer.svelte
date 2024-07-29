@@ -1,18 +1,27 @@
 <footer
-  class="py-20 sm:py-32 bg-black border-t border-solid border-violet-950 flex flex-col gap-4 sm:gap-8 justify-center items-center"
+  class="py-6 sm:py-4 bg-black border-t border-solid border-violet-950 flex justify-center items-center"
 >
-  <p class="px-4 py-2 bg-white text-slate-950 font-medium">Connect with me &darr;</p>
-  <div class="flex flex-col gap-4 items-center justify-center">
-    <p><b class="pr-2">Email</b> jessejmetzger@gamil.com</p>
-    <p>
-      <b class="pr-2">Github</b> <i class="fa-brands fa-github"></i>
-      <a class="text-biolet-400" target="_blank" href="https://github.com/jmetzg11alpine">
-        jesse_metzger<sup
-          ><span class="text-xs scale-75 pl-0.5"
-            ><i class="fa-solid fa-arrow-up-right-from-square text-xs scalte-[75%]"
-            ></i></span
-          ></sup
-        >
+  <div class="flex justify-between text-lg sm:text-base md:text-xl lg:text-2xl">
+    <p class="mx-4">
+      <i class="fa-brands fa-linkedin mr-2" />
+      <a
+        class="text-violet-400"
+        target="_blank"
+        href="https://www.linkedin.com/in/jmetzg11/"
+        ><sup>
+          <i class="fa-solid fa-arrow-up-right-from-square" />
+        </sup></a
+      >
+    </p>
+    <p class="mx-4">
+      <i class="fa-regular fa-envelope mr-2"></i>jessejmetzger@gamil.com
+    </p>
+    <p class="mx-4">
+      <i class="fa-brands fa-github mr-2" />
+      <a class="text-violet-400" target="_blank" href="https://github.com/jmetzg11alpine">
+        <sup>
+          <i class="fa-solid fa-arrow-up-right-from-square" />
+        </sup>
       </a>
     </p>
   </div>

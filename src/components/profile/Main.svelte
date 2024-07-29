@@ -15,7 +15,7 @@
     {
       name: 'Project C',
       icon: 'fa-solid fa-sack-dollar',
-      href: 'https://seemyfamily.net/budget',
+      href: '/budget',
     },
     {
       name: 'Family Tree',

@@ -1,6 +1,5 @@
 <script>
   export let y;
-  console.log(y);
   let tabs = [
     { name: 'Projects', link: '#projects' },
     { name: 'About Me', link: '#about' },
