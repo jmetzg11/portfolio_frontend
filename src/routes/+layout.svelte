@@ -19,7 +19,6 @@
 
   function updateBodyClassAndPrticles() {
     if (typeof window !== 'undefined') {
-      console.log('i was called');
       let bodyClass = currentPath === '/' ? 'bg-slate-950 text-white relative' : '';
       document.body.className = bodyClass;
       if (profilePage) {

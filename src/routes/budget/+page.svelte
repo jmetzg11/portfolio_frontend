@@ -1,5 +1,14 @@
-<script>
-  import BudgetMain from '../../components/budget/Main.svelte';
+<script lang="ts">
+  import { onDestroy, onMount } from 'svelte';
+  import { activeBudgetButton, data } from '../../stores/budgetStore';
+  import { get } from 'svelte/store';
+  import { getData } from './helpers';
+
+  onMount(() => {
+    getData(get(activeBudgetButton));
+  });
 </script>
 
-<BudgetMain />
+<div>graphs to be added later</div>
+<div>Button clicked: {$activeBudgetButton}</div>
+<div>{data}</div>

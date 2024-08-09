@@ -1,7 +1,6 @@
 <script lang="ts">
-  import '../../app.css';
+  import Header from '../../components/budget/Header.svelte';
 </script>
 
-<div class="relative w-full h-11 bg-purple-400">
-  <slot />
-</div>
+<Header />
+<slot />
