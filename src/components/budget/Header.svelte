@@ -1,20 +1,17 @@
 <script lang="ts">
   import { activeBudgetButton } from '../../stores/budgetStore';
-  import { getData } from '../../routes/budget/helpers';
 
-  const setActive = (button: string) => {
+  const setActive = async (button: string) => {
     activeBudgetButton.set(button);
-    getData(button);
-    console.log('i was called');
   };
 </script>
 
 <header class="flex items-center justify-around h-[10vh] p-4">
   <button
     class="text-4xl p-6 mx-2 rounded-lg"
-    class:active={$activeBudgetButton === 'budget'}
-    on:click={() => setActive('budget')}
-    style="background-color: rgba(56, 182, 255, 0.6)">Budget</button
+    class:active={$activeBudgetButton === 'agency'}
+    on:click={() => setActive('agency')}
+    style="background-color: rgba(56, 182, 255, 0.6)">Agency</button
   >
   <button
     class="text-4xl p-6 mx-2 rounded-lg"
