@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import Chart from 'chart.js/auto';
+  import type { AgencyEntry } from './helpers';
 
   let chartContainer: HTMLCanvasElement | null = null;
   let chart: any = null;
 
-  export let data;
-  console.log(data);
+  export let data: AgencyEntry[];
 
   onMount(() => {
     if (chartContainer) {
@@ -25,9 +25,15 @@
         },
         options: {
           responsive: true,
+          animation: { duration: 1000 },
           plugins: {
             legend: {
               display: true,
+              labels: { padding: 5, font: { size: 14 } },
+              onHover: function (event, legendItem) {
+                const chart = this.chart;
+                chart.canvas.style.cursor = 'pointer';
+              },
             },
             title: {
               display: false,
@@ -39,7 +45,7 @@
                   const item = data[tooltipItems[0].dataIndex];
                   return `${item.tooltip}`;
                 },
-                label: function (tooltipItem) {
+                label: function (tooltipItem: any) {
                   return `$${tooltipItem.raw.toLocaleString()}`;
                 },
               },

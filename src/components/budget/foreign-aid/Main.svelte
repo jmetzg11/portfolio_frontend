@@ -1,12 +1,18 @@
 <script>
   import { onMount } from 'svelte';
-  import { getForeignAidData } from './helpers';
+  import { getCountries } from './helpers';
+  import Filters from './Filters.svelte';
+  import BarChart from './BarChart.svelte';
+  import Map from './Map.svelte';
 
-  let data;
   onMount(async () => {
-    data = await getForeignAidData();
+    await getCountries();
   });
 </script>
 
-<h1>Foreign Aid</h1>
-<div>{data}</div>
+<div class="h-[90vh] bg-pink-200 w-full">
+  <div class="h-[30vh] flex flex-row">
+    <Filters /><BarChart />
+  </div>
+  <div class="h-[60vh] bg-green-200"><Map /></div>
+</div>
