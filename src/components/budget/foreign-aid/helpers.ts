@@ -1,31 +1,22 @@
 import { writable, get } from 'svelte/store';
 
+export type MapDataItem = {
+  lat: number;
+  lng: number;
+  text: string;
+  size: number;
+  amount: number;
+};
+
 export const filterStore = writable({
   country: 'all',
   year: 'all',
 });
 
 export const countriesStore = writable<string[]>(['all']);
-
-export const getCountries = async (): Promise<string[] | 'error' | undefined> => {
-  const url = `${import.meta.env.VITE_API}/get_countries`;
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
-    const resp = await response.json();
-    countriesStore.set(resp.countries);
-  } catch (err) {
-    console.error('Falied to get a list of countries');
-    return 'error';
-  }
-};
+export const mapDataStore = writable([]);
 
 export const getForeignAidData = async () => {
-  console.log('get for aid was called');
   const url = `${import.meta.env.VITE_API}/foreign_aid`;
   const filterData = get(filterStore);
   try {
@@ -37,8 +28,8 @@ export const getForeignAidData = async () => {
       body: JSON.stringify(filterData),
     });
     const result = await response.json();
-    console.log(url);
-    console.log(result);
+    countriesStore.set(result.countries);
+    mapDataStore.set(result.map_data);
   } catch (err) {
     console.error('Failed to get agency data', err);
     return 'error';
