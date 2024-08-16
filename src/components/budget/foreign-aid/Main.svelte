@@ -10,9 +10,10 @@
   });
 </script>
 
-<div class="h-[90vh] bg-pink-200 w-full">
-  <div class="h-[30vh] flex flex-row">
-    <Filters /><BarChart />
+<div class="h-[90vh] w-full">
+  <div class="h-[20vh] flex flex-row">
+    <div class="flex flex-col h-100 w-1/2 p-4"><Filters /></div>
+    <div class="w-1/2"><BarChart /></div>
   </div>
   <Map />
 </div>

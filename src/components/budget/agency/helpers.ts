@@ -1,15 +1,15 @@
-export interface AgencyEntry {
+export type AgencyEntry = {
   label: string;
   value: number;
   tooltip: string;
   background_color: string;
-}
+};
 
-export interface AgencyData {
+export type AgencyData = {
   main_data: AgencyEntry[] | null;
   other_data: AgencyEntry[] | null;
   table_data: [string, number][] | null;
-}
+};
 
 export const getAgencyData = async (): Promise<AgencyData | 'error'> => {
   const url = `${import.meta.env.VITE_API}/agency`;

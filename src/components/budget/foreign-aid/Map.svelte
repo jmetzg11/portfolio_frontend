@@ -50,4 +50,4 @@
   });
 </script>
 
-<div class="w-100 h-[60vh]" id="map"></div>
+<div class="w-100 h-[70vh]" id="map"></div>
