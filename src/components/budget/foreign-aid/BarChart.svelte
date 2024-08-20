@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onDestroy } from 'svelte';
   import Chart from 'chart.js/auto';
   import { barDataStore } from './helpers';
   import type { BarChartType } from './helpers';
@@ -36,7 +36,7 @@
               beginAtZero: true,
               ticks: {
                 callback: function (value) {
-                  return '$' + value + 'M';
+                  return '$' + value.toLocaleString() + 'M';
                 },
               },
               grid: {
@@ -56,12 +56,12 @@
             tooltip: {
               displayColors: false,
               callbacks: {
-                label: function (context) {
+                label: function (context: any) {
                   let label = context.dataset.label || '';
                   if (label) {
                     label += ': ';
                   }
-                  label += '$' + context.raw + 'M';
+                  label += '$' + context.raw.toLocaleString() + 'M';
                   return label;
                 },
               },

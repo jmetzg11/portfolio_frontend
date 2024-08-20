@@ -1,5 +1,5 @@
 import { writable, get } from 'svelte/store';
-import type { ChartData, ChartDataset } from 'chart.js';
+import type { ChartDataset } from 'chart.js';
 
 export type BarChartType = {
   labels: string[];
