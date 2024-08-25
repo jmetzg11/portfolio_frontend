@@ -27,6 +27,7 @@ export const getComparisonData = async (): Promise<ComparisonStoreType | string>
     });
     const rsp: ComparisonStoreType = await response.json();
     comparisonStore.set(rsp);
+    console.log('response', rsp.data);
     return rsp;
   } catch (err) {
     console.error('Failed to get agency data', err);

@@ -33,6 +33,8 @@
       chart.destroy();
     }
 
+    console.log('main.svelte', $comparisonStore.data);
+
     chart = new Chart(chartContainer, {
       type: 'line',
       data: prepareChartData(),
