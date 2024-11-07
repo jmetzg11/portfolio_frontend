@@ -1,0 +1,6 @@
+DEVELOPMENT
+
+npm run dev -- --open
+
+
+PRODUCTION
