@@ -5,6 +5,7 @@
 		{ name: 'Crypt', link: '/crypto', description: 'some details' },
 		{ name: 'WebAssembly', link: '/webassembly', description: 'some details' },
 		{ name: 'X', link: '/x', description: 'some details' },
+		{ name: 'Logistics', link: '/logistics', description: 'some details' },
 		{ name: 'Education', link: '/education', description: 'some details' },
 		{ name: 'Resume', link: '/resume', description: 'some details' }
 	];
