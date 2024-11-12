@@ -17,7 +17,7 @@
 <div class="flex flex-col h-screen overflow-hidden">
 	<BudgetHeader {index} {setIndex} />
 
-	<div class="flex-grow overflow-auto p-4">
+	<div class="flex-grow overflow-auto">
 		{#if $index === 0}
 			<Agency />
 		{:else if $index === 1}

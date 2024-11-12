@@ -19,7 +19,6 @@
 
 {#if data && data.mainData}
 	<div class="flex flex-col gap-4 p-4 w-full h-full">
-		<!-- Graph Container -->
 		<div class="flex flex-col sm:flex-row gap-4 flex-grow">
 			<div class="flex-1">
 				<PieGraph data={data.mainData} title={'Main Agency Spending'} />
@@ -29,7 +28,6 @@
 			</div>
 		</div>
 
-		<!-- Table Container -->
 		<div class="overflow-y-auto flex-grow">
 			<Table data={data.remainingData} />
 		</div>
