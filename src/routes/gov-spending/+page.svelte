@@ -15,7 +15,7 @@
 </script>
 
 <div class="flex flex-col h-screen overflow-hidden">
-	<BudgetHeader {index} {setIndex} />
+	<div class="flex-none"><BudgetHeader {index} {setIndex} /></div>
 
 	<div class="flex-grow overflow-auto">
 		{#if $index === 0}
@@ -29,3 +29,9 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.flex-grow {
+		height: 100%;
+	}
+</style>

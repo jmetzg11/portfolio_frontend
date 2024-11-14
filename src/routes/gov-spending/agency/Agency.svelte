@@ -12,7 +12,7 @@
 			}
 			data = await response.json();
 		} catch (error) {
-			console.lerr('Error fetching data:', error);
+			console.err('Error fetching data:', error);
 		}
 	});
 </script>
