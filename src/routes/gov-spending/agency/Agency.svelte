@@ -20,14 +20,13 @@
 {#if data && data.mainData}
 	<div class="flex flex-col gap-4 p-4 w-full h-full">
 		<div class="flex flex-col sm:flex-row gap-4 flex-grow">
-			<div class="flex-1">
+			<div class="flex-1 h-[40vh] md:max-h-[50vh] md:h-auto md:max-w-[600px] mx-auto">
 				<PieGraph data={data.mainData} title={'Main Agency Spending'} />
 			</div>
-			<div class="flex-1">
+			<div class="flex-1 h-[40vh] md:max-h-[50vh] md:h-auto md:max-w-[600px] mx-auto">
 				<PieGraph data={data.otherData} title={'Other Agency Spending'} />
 			</div>
 		</div>
-
 		<div class="overflow-y-auto flex-grow">
 			<Table data={data.remainingData} />
 		</div>
@@ -35,16 +34,3 @@
 {:else}
 	<p class="text-center mt-8 text-lg">Loading data...</p>
 {/if}
-
-<style>
-	/* Responsive adjustments for smaller screens */
-	@media (max-width: 1024px) {
-		.graph-container {
-			flex-direction: column;
-		}
-
-		.graph-container > div {
-			margin-bottom: 1rem;
-		}
-	}
-</style>

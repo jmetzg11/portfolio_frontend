@@ -1,7 +1,11 @@
 <script>
+	import { mapDataStore } from './store';
 	import { onDestroy, onMount } from 'svelte';
 	import { normalizeData } from './helpers';
-	export let data;
+	let data;
+	const unsubscribe = mapDataStore.subscribe((value) => {
+		data = value;
+	});
 
 	let map;
 	let markers = [];
@@ -77,6 +81,7 @@
 			map.remove();
 			map = null;
 		}
+		unsubscribe();
 	});
 </script>
 

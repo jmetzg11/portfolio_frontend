@@ -10,8 +10,6 @@
 	const setIndex = (newIndex) => {
 		index.set(newIndex);
 	};
-
-	console.log(index);
 </script>
 
 <div class="flex flex-col h-screen overflow-hidden">
