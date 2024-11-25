@@ -1,13 +1,21 @@
 <script>
 	const projects = [
-		{ name: 'See My Family', link: '/seemyfamily', description: 'some details' },
-		{ name: 'Government Spending', link: 'gov-spending', description: 'some details' },
-		{ name: 'Crypt', link: '/crypto', description: 'some details' },
-		{ name: 'WebAssembly', link: '/webassembly', description: 'some details' },
-		{ name: 'X', link: '/x', description: 'some details' },
-		{ name: 'Logistics', link: '/logistics', description: 'some details' },
-		{ name: 'Education', link: '/education', description: 'some details' },
-		{ name: 'Resume', link: '/resume', description: 'some details' }
+		{
+			name: 'See My Family',
+			link: 'https://seemyfamily.net',
+			description: 'A site for my family to track and visualize relations across the globe and time'
+		},
+		{
+			name: 'Government Spending',
+			link: 'gov-spending',
+			description:
+				'See how much money each agency gets, where and how much foreign aid is being spent, and what the government spends its money on'
+		},
+		{
+			name: 'Geography',
+			link: 'geography',
+			description: 'A tracker to see all the places I spend at least a couple of weeks'
+		}
 	];
 </script>
 
