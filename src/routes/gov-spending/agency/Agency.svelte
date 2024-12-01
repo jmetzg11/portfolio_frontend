@@ -11,6 +11,7 @@
 				throw new Error('Falied to fetch data');
 			}
 			data = await response.json();
+			console.log(data);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}

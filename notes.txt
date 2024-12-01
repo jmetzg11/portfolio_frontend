@@ -4,3 +4,6 @@ npm run dev -- --open
 
 
 PRODUCTION
+flyctl deploy --build-arg VITE_BACKEND_URL=https://portfolio-backend-jesse-metzger.fly.dev
+
+domain bought with squarespace
