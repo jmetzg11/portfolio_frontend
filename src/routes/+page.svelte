@@ -12,6 +12,11 @@
 				'See how much money each agency gets, where and how much foreign aid is being spent, and what the government spends its money on'
 		},
 		{
+			name: 'Rust WebAssembly',
+			link: 'web-assembly',
+			description: 'Visually see the better performance with Rust WebAssemly'
+		},
+		{
 			name: 'Geography',
 			link: 'geography',
 			description: 'A tracker to see all the places I spend at least a couple of weeks'
