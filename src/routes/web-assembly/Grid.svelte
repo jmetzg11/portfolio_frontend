@@ -12,8 +12,16 @@
 	});
 
 	async function handleCellClick(rowIndex, colIndex) {
-		grid[rowIndex][colIndex] = stateValue;
-		gridStore.set(grid);
+		console.log('i was called');
+		gridStore.update((grid) => {
+			const updatedGrid = [...grid];
+			if (stateValue === 'cheese') {
+				updatedGrid[rowIndex][colIndex] = { type: stateValue, value: 4 };
+			} else {
+				updatedGrid[rowIndex][colIndex] = { type: stateValue };
+			}
+			return updatedGrid;
+		});
 		await tick();
 	}
 
