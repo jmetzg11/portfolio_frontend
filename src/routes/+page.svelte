@@ -13,7 +13,7 @@
 		},
 		{
 			name: 'ETF Investing',
-			link: 'investing',
+			link: 'etf',
 			description: 'An automated investment strategy'
 		},
 		{
