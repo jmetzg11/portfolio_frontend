@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 	import { barDataStore } from './store';
-	import { getLineData } from './helpers';
 
 	let chart;
 	let chartId = 'etf-bar-graph';
@@ -54,7 +53,8 @@
 		const chartElement = document.getElementById(chartId);
 		if (!chartElement) return;
 		chart = new ApexCharts(chartElement, options);
-		chart.render();
+		await chart.render();
+		updateChart();
 	}
 
 	function updateChart() {
@@ -74,12 +74,18 @@
 	}
 
 	onMount(() => {
-		initializeChart();
+		barDataStore.subscribe((value) => {
+			barData = value;
+			if (chart) {
+				updateChart();
+			} else {
+				initializeChart();
+			}
+		});
 	});
 </script>
 
 <div class="bar-container"><div id={chartId}></div></div>
-<button on:click={getLineData}>get data</button>
 
 <style>
 	.bar-container {
