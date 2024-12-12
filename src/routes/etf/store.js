@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { getBarData } from './helpers';
+import { getData } from './helpers';
 
 export const barDataStore = writable({
 	categories: [],
@@ -17,10 +17,13 @@ const prepReserveData = (reserves) => {
 export const transactionStore = writable([]);
 
 async function fetchBarData() {
-	const data = await getBarData();
+	const data = await getData();
 	prepReserveData(data.reserves);
-	console.log(data.transactions);
 	transactionStore.set(data.transactions);
 }
 
 fetchBarData();
+
+export const clickedTickers = writable(
+	new Set(['EXI', 'IXG', 'IXJ', 'IXC', 'IXN', 'IXP', 'JXI', 'KXI', 'MXI', 'REET', 'RXI'])
+);

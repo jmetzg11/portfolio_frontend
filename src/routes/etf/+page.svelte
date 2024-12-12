@@ -1,9 +1,9 @@
 <script>
-	import TopPart from './TopBars.svelte';
-	import TopBars from './TopBars.svelte';
+	import TopPart from './TopPart.svelte';
+	import Bars from './Bars.svelte';
 	import FullTable from './FullTable.svelte';
 </script>
 
 <TopPart />
-<TopBars />
+<Bars />
 <FullTable />
