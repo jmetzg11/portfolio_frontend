@@ -29,7 +29,7 @@
 	}
 </script>
 
-<div class="flex flex-wrap gap-4 m-4">
+<div class="grid gap-4 m-4" style="grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));">
 	{#each items as item}
 		<div
 			class="flex flex-col items-center justify-center p-4 border border-gray-200 shadow-lg rounded-lg w-20 h-20 cursor-pointer transition hover:bg-gray-100"

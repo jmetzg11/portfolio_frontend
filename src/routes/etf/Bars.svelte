@@ -1,8 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 	import { barDataStore, clickedTickers } from './store';
-	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
-	import { icons } from './helpers';
 
 	let chart;
 	let chartId = 'etf-bar-graph';
@@ -14,6 +12,8 @@
 			$clickedTickers.has($barDataStore.categories[index])
 		)
 	};
+
+	$: console.log(filteredBarData);
 
 	async function initializeChart() {
 		if (typeof window !== 'undefined') {
@@ -80,11 +80,4 @@
 	});
 </script>
 
-<div class="bar-container"><div id={chartId}></div></div>
-
-<style>
-	.bar-container {
-		height: 300px;
-		width: 100%;
-	}
-</style>
+<div class="h-full w-full"><div id={chartId}></div></div>

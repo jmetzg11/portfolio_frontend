@@ -22,3 +22,4 @@ vite.config.ts.timestamp-*
 
 nginx.conf
 fly.toml
+notes.txt

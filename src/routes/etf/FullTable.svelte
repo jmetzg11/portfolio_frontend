@@ -1,34 +1,47 @@
 <script>
-	import { transactionStore } from './store';
+	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+	import { transactionStore, clickedTickers } from './store';
+	import { icons } from './helpers';
+
+	let filteredTransactionData;
+
+	$: filteredTransactionData = $transactionStore
+		.filter((item) => $clickedTickers.has(item.stock))
+		.slice(0, 55)
+		.map((item) => ({
+			...item,
+			percent: Number(item.percent),
+			date: new Date(item.date).toLocaleDateString('en-US', {
+				month: 'short',
+				day: '2-digit',
+				timeZone: 'UTC'
+			})
+		}));
 </script>
 
-<table>
-	<thead>
-		<tr>
-			<th>Stock</th>
-			<th>Date</th>
-			<th>Market Value</th>
-			<th>Unrealized P&L</th>
-			<th>Percent Change</th>
-			<th>Amount Spent</th>
-		</tr>
-	</thead>
-	<tbody>
-		{#if $transactionStore.length > 0}
-			{#each $transactionStore as d, i}
-				<tr key={i}>
-					<td>{d.stock}</td>
-					<td>{d.date}</td>
-					<td>{d.marketValue}</td>
-					<td>{d.unrealizedPlpc}</td>
-					<td>{d.percent}</td>
-					<td>{d.value}</td>
+<div class="overflow-x-hidden">
+	<div class="text-center font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+		Last 5 Days
+	</div>
+	<table class="w-full">
+		<tbody>
+			{#if filteredTransactionData.length > 0}
+				{#each filteredTransactionData as d, i}
+					<tr key={i} class="border-b border-gray-200">
+						<td class="text-blue-500 text-center"><FontAwesomeIcon icon={icons[d.stock]} /></td>
+						<td class="text-center">{d.date.split('T')[0]}</td>
+						<td
+							class="text-center font-semibold {d.percent > 0 ? 'text-green-500' : 'text-red-500'}"
+							>{d.percent.toFixed(2)}%</td
+						>
+						<td class="text-center">${d.value}</td>
+					</tr>
+				{/each}
+			{:else}
+				<tr>
+					<td colspan="4">Loading...</td>
 				</tr>
-			{/each}
-		{:else}
-			<tr>
-				<td colspan="4">Loading...</td>
-			</tr>
-		{/if}
-	</tbody>
-</table>
+			{/if}
+		</tbody>
+	</table>
+</div>
