@@ -1,13 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
 	import { transactionStore, clickedTickers } from './store';
+	import { colorMapper } from './helpers';
 	let chart;
 	let chartId = 'etf-line-graph';
 
 	let FilteredData = {};
 	let xAxisCategories = [];
+	let lineColors = [];
+	let selectedButton = 'value';
 
-	$: console.log($clickedTickers);
+	function handleClick(buttonValue) {
+		selectedButton = buttonValue;
+	}
 
 	$: {
 		const groupedData = {};
@@ -15,7 +20,7 @@
 		$transactionStore
 			.filter((item) => $clickedTickers.has(item.stock))
 			.forEach((item) => {
-				const { date, marketValue, stock } = item;
+				const { date, marketValue, unrealizedPlpc, stock } = item;
 
 				allDates.add(
 					new Date(date).toLocaleString('en-us', {
@@ -35,15 +40,18 @@
 						day: '2-digit',
 						timeZone: 'UTC'
 					}),
-					marketValue: Number(marketValue)
+					value: Number(marketValue),
+					performance: Number(unrealizedPlpc) * 100
 				});
 			});
 		xAxisCategories = Array.from(allDates).sort((a, b) => new Date(a) - new Date(b));
 		FilteredData = Object.entries(groupedData).map(([stock, data]) => ({
 			name: stock,
-			data: xAxisCategories.map((date) => data.find((d) => d.date === date)?.marketValue || 0)
+			data: xAxisCategories.map((date) => data.find((d) => d.date === date)?.[selectedButton] || 0)
 		}));
 	}
+
+	$: lineColors = FilteredData.map((item) => colorMapper[item.name]);
 
 	async function initializeChart() {
 		if (typeof window !== 'undefined') {
@@ -58,18 +66,37 @@
 					width: '100%',
 					toolbar: { show: false },
 					margin: 0,
-					padding: 0
+					padding: 0,
+					legend: { show: false },
+					zoom: { enabled: false },
+					pan: { enabled: false }
 				},
 				title: { text: '' },
 				series: [],
 				xaxis: {
 					categories: []
 				},
-				yaxis: { show: true, labels: { formatter: (value) => `$${Math.round(value)}` } },
+				yaxis: {
+					show: true,
+					labels: {
+						formatter: (value) =>
+							selectedButton === 'value' ? `$${Math.round(value)}` : `${Math.round(value)}%`
+					}
+				},
 				grid: { show: false },
-				tooltip: { enabled: false },
+				tooltip: {
+					enabled: true,
+					theme: 'light', // Use a fixed tooltip rendering style
+					style: { fontSize: '12px' }
+				},
+
 				dataLabels: {
 					enabled: false
+				},
+				legend: { show: false },
+				stroke: {
+					curve: 'smooth',
+					width: 4
 				}
 			});
 			await chart.render();
@@ -83,7 +110,8 @@
 				series: FilteredData,
 				xaxis: {
 					categories: xAxisCategories
-				}
+				},
+				colors: lineColors
 			});
 		}
 	}
@@ -99,6 +127,22 @@
 	});
 </script>
 
-<div class="container h-full w-full"><div id={chartId}></div></div>
+<div class="h-full w-full flex flex-col">
+	<div class="flex space-x-4">
+		<button
+			class={`px-4 py-2 font-semibold text-sm rounded-lg transition-all duration-300 ${selectedButton === 'value' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+			on:click={() => handleClick('value')}>Value</button
+		>
+		<button
+			class={`px-4 py-2 font-semibold text-sm rounded-lg transition-all duration-300 ${selectedButton === 'performance' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+			on:click={() => handleClick('performance')}>Performance</button
+		>
+	</div>
+	<div class="flex-1 relative"><div id={chartId}></div></div>
+</div>
 
-<style></style>
+<style>
+	.apexcharts-tooltip {
+		z-index: 9999 !important;
+	}
+</style>

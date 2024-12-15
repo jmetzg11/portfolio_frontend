@@ -24,6 +24,4 @@ async function fetchBarData() {
 
 fetchBarData();
 
-export const clickedTickers = writable(
-	new Set(['EXI', 'IXG', 'IXJ', 'IXC', 'IXN', 'IXP', 'JXI', 'KXI', 'MXI', 'REET', 'RXI'])
-);
+export const clickedTickers = writable(new Set(['EXI', 'IXN', 'IXP', 'RXI', 'KXI', 'MXI', 'IXJ']));

@@ -1,13 +1,13 @@
 <script>
 	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
-	import { icons } from './helpers';
+	import { icons, colorMapper } from './helpers';
 	import { clickedTickers } from './store';
 
 	const items = [
-		{ icon: icons.EXI, ticker: 'EXI', description: 'Indeustry' },
+		{ icon: icons.EXI, ticker: 'EXI', description: 'Industry' },
+		{ icon: icons.IXC, ticker: 'IXC', description: 'Health' },
 		{ icon: icons.IXG, ticker: 'IXG', description: 'Energy' },
 		{ icon: icons.IXJ, ticker: 'IXJ', description: 'Finance' },
-		{ icon: icons.IXC, ticker: 'IXC', description: 'Health' },
 		{ icon: icons.IXN, ticker: 'IXN', description: 'Tech' },
 		{ icon: icons.IXP, ticker: 'IXP', description: 'Telecom' },
 		{ icon: icons.JXI, ticker: 'JXI', description: 'Utility' },
@@ -20,7 +20,9 @@
 	function toggleClick(ticker) {
 		clickedTickers.update((set) => {
 			if (set.has(ticker)) {
-				set.delete(ticker);
+				if (set.size > 3) {
+					set.delete(ticker);
+				}
 			} else {
 				set.add(ticker);
 			}
@@ -36,7 +38,7 @@
 			on:click={() => toggleClick(item.ticker)}
 		>
 			{#if $clickedTickers.has(item.ticker)}
-				<div class="text-2xl text-blue-500 mb-2">
+				<div class="text-2xl mb-2" style="color: {colorMapper[item.ticker]};">
 					<FontAwesomeIcon icon={item.icon} />
 				</div>
 			{:else}

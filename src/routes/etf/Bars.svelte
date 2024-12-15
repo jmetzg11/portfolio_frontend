@@ -1,10 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
+	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
 	import { barDataStore, clickedTickers } from './store';
+	import { icons, colorMapper } from './helpers';
 
 	let chart;
 	let chartId = 'etf-bar-graph';
 	let filteredBarData;
+	let barPositions = [];
+	let barColors = [];
+	let dataLabelFontSize = '12px';
 
 	$: filteredBarData = {
 		categories: $barDataStore.categories.filter((category) => $clickedTickers.has(category)),
@@ -12,8 +17,9 @@
 			$clickedTickers.has($barDataStore.categories[index])
 		)
 	};
-
-	$: console.log(filteredBarData);
+	$: {
+		barColors = filteredBarData.categories.map((c) => colorMapper[c]);
+	}
 
 	async function initializeChart() {
 		if (typeof window !== 'undefined') {
@@ -28,23 +34,37 @@
 					width: '100%',
 					toolbar: { show: false },
 					margin: 0,
-					padding: 0
+					padding: 0,
+					events: {
+						animationEnd: function (chartContext, options) {
+							setTimeout(() => calculateBarPositions(), 150);
+						}
+					},
+					zoom: { enabled: false },
+					pan: { enabled: false }
 				},
 				title: { text: '' },
 				series: [],
 				xaxis: {
-					categories: []
+					categories: [],
+					labels: { show: false }
 				},
 				yaxis: { show: false },
 				grid: { show: false },
 				tooltip: { enabled: false },
 				dataLabels: {
-					enabled: true
+					enabled: true,
+					style: { fontSize: '12px' },
+					formatter: function (val) {
+						return `$${Math.round(val)}`;
+					}
 				},
+				legend: { show: false },
 				plotOptions: {
 					bar: {
 						horizontal: false,
-						dataLabels: { position: 'top' }
+						dataLabels: { position: 'top' },
+						columnWidth: '85%'
 					}
 				}
 			});
@@ -62,11 +82,26 @@
 						data: filteredBarData.data
 					}
 				],
-				xaxis: {
-					categories: filteredBarData.categories
+				colors: barColors,
+				plotOptions: {
+					bar: {
+						distributed: true
+					}
 				}
 			});
 		}
+	}
+
+	function calculateBarPositions() {
+		const parentContainer = document.querySelector('.main-container');
+		const parentLeft = parentContainer.getBoundingClientRect().left;
+		console.log(parentLeft);
+
+		const bars = document.querySelectorAll(`#${chartId} .apexcharts-bar-area`);
+		barPositions = Array.from(bars).map((bar) => {
+			const rect = bar.getBoundingClientRect();
+			return rect.left - parentLeft + rect.width / 2; // Center of each bar
+		});
 	}
 
 	$: {
@@ -80,4 +115,25 @@
 	});
 </script>
 
-<div class="h-full w-full"><div id={chartId}></div></div>
+<div class="relative h-full w-full">
+	<div
+		class="absolute top-0 left-0 w-full text-center font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+	>
+		ETF Reserves
+	</div>
+	<div id={chartId}></div>
+	<div class="absolute bottom-0 left-0 w-full flex justify-around">
+		{#each filteredBarData.categories as category, i (category)}
+			{#if barPositions[i]}
+				<div
+					key={category}
+					class="absolute"
+					style="transform: translateX(-50%); top: 100%; left: {barPositions[
+						i
+					]}px; color: {colorMapper[category]};"
+				>
+					<FontAwesomeIcon id={category} key={category} icon={icons[category]} class="text-2xl" />
+				</div>{/if}
+		{/each}
+	</div>
+</div>
