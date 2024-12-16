@@ -95,7 +95,6 @@
 	function calculateBarPositions() {
 		const parentContainer = document.querySelector('.main-container');
 		const parentLeft = parentContainer.getBoundingClientRect().left;
-		console.log(parentLeft);
 
 		const bars = document.querySelectorAll(`#${chartId} .apexcharts-bar-area`);
 		barPositions = Array.from(bars).map((bar) => {

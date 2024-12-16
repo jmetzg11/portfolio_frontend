@@ -41,11 +41,35 @@ export const data = [
 	},
 	{
 		year: 2009,
+		location: 'Ústí nad Labem, Czech Republic',
+		text: 'First time in Europe',
+		value: 1,
+		lat: 50.6584116,
+		lng: 14.0354625
+	},
+	{
+		year: 2009,
 		location: 'Buenos Aires, Argentina',
 		text: 'Summer Abroad to learn Spanish',
 		value: 3,
 		lat: -34.6156548,
 		lng: -58.5156979
+	},
+	{
+		year: 2009,
+		location: 'Mendoza, Argentina',
+		text: 'Wine education',
+		value: 1,
+		lat: -32.8798371,
+		lng: -68.8642868
+	},
+	{
+		year: 2009,
+		location: 'Tijuana, Mexico',
+		text: 'Spanish practice',
+		value: 1,
+		lat: 32.4572678,
+		lng: -117.1166
 	},
 	{
 		year: 2010,
@@ -72,12 +96,60 @@ export const data = [
 		lng: 34.1057059
 	},
 	{
+		year: 2010,
+		location: 'Athens, Greece',
+		text: 'Family Vacation',
+		value: 1,
+		lat: 37.9879889,
+		lng: 23.6939644
+	},
+	{
+		year: 2010,
+		location: 'Rome, Italy',
+		text: 'Family Vacation',
+		value: 1,
+		lat: 41.9059807,
+		lng: 12.4466053
+	},
+	{
+		year: 2010,
+		location: 'Madrid, Spain',
+		text: 'Family Vacation',
+		value: 1,
+		lat: 40.4378368,
+		lng: -3.844683
+	},
+	{
+		year: 2010,
+		location: 'Tijuana, Mexico',
+		text: 'Spanish practice',
+		value: 1,
+		lat: 32.4572678,
+		lng: -117.1166
+	},
+	{
 		year: 2011,
 		location: 'Accra, Ghana',
 		text: 'Semester abroad',
 		value: 5,
 		lat: 5.5913738,
 		lng: -0.2621296
+	},
+	{
+		year: 2011,
+		location: 'Kumasi, Ghana',
+		text: 'Field Trip',
+		value: 1,
+		lat: 6.6950214,
+		lng: -1.6437655
+	},
+	{
+		year: 2011,
+		location: 'Lomé, Togo',
+		text: 'Adventrue',
+		value: 1,
+		lat: 6.1746457,
+		lng: 1.2175335
 	},
 	{
 		year: 2011,
@@ -112,12 +184,52 @@ export const data = [
 		lng: 9.9784737
 	},
 	{
+		year: 2011,
+		location: 'Marrakesh, Morocco',
+		text: 'Break after exams',
+		value: 1,
+		lat: 31.6131258,
+		lng: -8.0206542
+	},
+	{
+		year: 2012,
+		location: 'Lisbon, Portugal',
+		text: 'Long weekend',
+		value: 1,
+		lat: 38.7201028,
+		lng: -9.150459
+	},
+	{
 		year: 2012,
 		location: 'El Fonoll, Spain',
 		text: 'First job abroad',
-		value: 2,
-		lat: 41.5289825,
+		value: 1,
+		lat: 41.5289786,
 		lng: 1.2268317
+	},
+	{
+		year: 2012,
+		location: 'Madrid, Spain',
+		text: 'Visits to friend',
+		value: 1,
+		lat: 40.4378368,
+		lng: -3.844683
+	},
+	{
+		year: 2012,
+		location: 'Vancouver, Canada',
+		text: 'Roadtrip',
+		value: 1,
+		lat: 49.2561342,
+		lng: -123.1311773
+	},
+	{
+		year: 2012,
+		location: 'Chicago, USA',
+		text: 'Roadtrip',
+		value: 1,
+		lat: 41.8587241,
+		lng: -87.7497106
 	},
 	{
 		year: 2012,
@@ -132,8 +244,16 @@ export const data = [
 		location: 'Hong Kong',
 		text: 'Temp work in Hong Kong',
 		value: 3,
-		lat: 22.3530259,
-		lng: 113.8097689
+		lat: 22.3262127,
+		lng: 114.1684683
+	},
+	{
+		year: 2012,
+		location: 'Macao',
+		text: 'Work trip',
+		value: 1,
+		lat: 22.2002619,
+		lng: 113.5374163
 	},
 	{
 		year: 2012,
@@ -153,7 +273,7 @@ export const data = [
 	},
 	{
 		year: 2013,
-		location: 'Kuala Lumpur',
+		location: 'Kuala Lumpur, Malaysia',
 		text: 'Visiting old colleague',
 		value: 1,
 		lat: 3.1386741,
@@ -161,11 +281,19 @@ export const data = [
 	},
 	{
 		year: 2013,
-		location: 'Banda Aceh',
+		location: 'Banda Aceh, Indonesia',
 		text: 'Travels',
 		value: 1,
 		lat: 5.5611859,
 		lng: 95.2875031
+	},
+	{
+		year: 2013,
+		location: 'Bali, Indonesia',
+		text: 'Travels',
+		value: 1,
+		lat: -8.3421174,
+		lng: 115.0658807
 	},
 	{
 		year: 2013,
@@ -177,6 +305,14 @@ export const data = [
 	},
 	{
 		year: 2013,
+		location: 'Tokyo, Japan',
+		text: 'vacation',
+		value: 1,
+		lat: 35.497202,
+		lng: 139.3664982
+	},
+	{
+		year: 2013,
 		location: 'Nablus, Palestine',
 		text: 'work in a school',
 		value: 6,
@@ -185,8 +321,8 @@ export const data = [
 	},
 	{
 		year: 2014,
-		location: 'Dzerzhinsky, Russian',
-		text: 'First job in Russian',
+		location: 'Dzerzhinsky, Russia',
+		text: 'First job in Russia',
 		value: 8,
 		lat: 55.6275161,
 		lng: 37.7997683
@@ -208,6 +344,14 @@ export const data = [
 		lng: -99.3084179
 	},
 	{
+		year: 2014,
+		location: 'Tijuana, Mexico',
+		text: 'Spanish practice',
+		value: 1,
+		lat: 32.4572678,
+		lng: -117.1166
+	},
+	{
 		year: 2015,
 		location: 'Ibiza, Spain',
 		text: 'Holiday',
@@ -225,7 +369,7 @@ export const data = [
 	},
 	{
 		year: 2015,
-		location: 'Moscow, Russian',
+		location: 'Moscow, Russia',
 		text: 'Better Work',
 		value: 9,
 		lat: 55.754119,
@@ -302,6 +446,14 @@ export const data = [
 		text: 'Started Graduate School',
 		lat: 44.4992289,
 		lng: 11.249286
+	},
+	{
+		year: 2018,
+		location: 'Oklahoma City, Oklahoma',
+		value: 1,
+		text: 'Road Trip',
+		lat: 35.4942601,
+		lng: -97.7384269
 	},
 	{
 		year: 2018,
@@ -401,6 +553,22 @@ export const data = [
 	},
 	{
 		year: 2022,
+		location: 'Val d’Isère, France',
+		value: 1,
+		text: 'Family Vacation',
+		lat: 45.4232007,
+		lng: 6.9325359
+	},
+	{
+		year: 2022,
+		location: 'Geneva, Switzerland',
+		value: 1,
+		text: 'Family Vacation',
+		lat: 46.2055315,
+		lng: 6.1223965
+	},
+	{
+		year: 2022,
 		location: 'Phuket, Thailand',
 		value: 1,
 		text: 'Work Travel',
@@ -470,6 +638,14 @@ export const data = [
 		value: 1,
 		lat: -34.6156548,
 		lng: -58.5156979
+	},
+	{
+		year: 2024,
+		location: 'Raleigh, North Carolina',
+		text: 'All Things Open Conference',
+		value: 1,
+		lat: 35.8238807,
+		lng: -78.6880527
 	},
 	{
 		year: 2024,

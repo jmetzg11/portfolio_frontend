@@ -6,15 +6,20 @@
 			description: 'A site for my family to track and visualize relations across the globe and time'
 		},
 		{
+			name: 'ETF Investing',
+			link: 'etf',
+			description: 'An automated investment strategy'
+		},
+		{
 			name: 'Government Spending',
 			link: 'gov-spending',
 			description:
 				'See how much money each agency gets, where and how much foreign aid is being spent, and what the government spends its money on'
 		},
 		{
-			name: 'ETF Investing',
-			link: 'etf',
-			description: 'An automated investment strategy'
+			name: 'Education & Certificates',
+			link: 'certificates',
+			description: 'My university diplomas and related certificates'
 		},
 		{
 			name: 'Geography',

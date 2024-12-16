@@ -1,5 +1,4 @@
 export const normalizeData = (data, year) => {
-	console.log(' i was called');
 	let filteredData;
 	if (year !== 'all') {
 		filteredData = data.filter((item) => item.year === year);

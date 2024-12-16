@@ -20,9 +20,7 @@
 </script>
 
 <div class="overflow-x-hidden">
-	<div class="text-center font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-		Last 5 Days
-	</div>
+	<div class="text-center font-semibold text-l md:text-xl lg:text-2xl xl:text-3xl">Last 5 Days</div>
 	<table class="w-full">
 		<tbody>
 			{#if filteredTransactionData.length > 0}

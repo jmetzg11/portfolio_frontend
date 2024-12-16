@@ -2,7 +2,6 @@
 	export let year;
 	import { createEventDispatcher } from 'svelte';
 	import { colors } from './helpers';
-	console.log(colors);
 	let startYear = 2008;
 	let endYear = 2024;
 	let years = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
