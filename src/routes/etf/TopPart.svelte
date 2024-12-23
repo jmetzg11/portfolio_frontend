@@ -5,24 +5,22 @@
 
 	const items = [
 		{ icon: icons.EXI, ticker: 'EXI', description: 'Industry' },
-		{ icon: icons.IXC, ticker: 'IXC', description: 'Health' },
-		{ icon: icons.IXG, ticker: 'IXG', description: 'Energy' },
-		{ icon: icons.IXJ, ticker: 'IXJ', description: 'Finance' },
+		{ icon: icons.IXC, ticker: 'IXC', description: 'Energy' },
+		{ icon: icons.IXG, ticker: 'IXG', description: 'Finance' },
+		{ icon: icons.IXJ, ticker: 'IXJ', description: 'Health' },
 		{ icon: icons.IXN, ticker: 'IXN', description: 'Tech' },
 		{ icon: icons.IXP, ticker: 'IXP', description: 'Telecom' },
 		{ icon: icons.JXI, ticker: 'JXI', description: 'Utility' },
 		{ icon: icons.KXI, ticker: 'KXI', description: 'Staples' },
 		{ icon: icons.MXI, ticker: 'MXI', description: 'Materials' },
 		{ icon: icons.REET, ticker: 'REET', description: 'RealEst' },
-		{ icon: icons.RXI, ticker: 'RXI', description: 'DiscCons' }
+		{ icon: icons.RXI, ticker: 'RXI', description: 'Disc' }
 	];
 
 	function toggleClick(ticker) {
 		clickedTickers.update((set) => {
 			if (set.has(ticker)) {
-				if (set.size > 3) {
-					set.delete(ticker);
-				}
+				set.delete(ticker);
 			} else {
 				set.add(ticker);
 			}

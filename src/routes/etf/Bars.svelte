@@ -75,6 +75,9 @@
 
 	function updateChart() {
 		if (filteredBarData && chart) {
+			const columnWidth =
+				filteredBarData.data.length > 2 ? '85%' : `${100 / filteredBarData.data.length}%`;
+
 			chart.updateOptions({
 				series: [
 					{
@@ -85,21 +88,38 @@
 				colors: barColors,
 				plotOptions: {
 					bar: {
-						distributed: true
+						distributed: true,
+						columnWidth,
+						barHeight: '100%'
 					}
-				}
+				},
+				xaxis: {
+					categories: filteredBarData.categories,
+					labels: { show: false }
+				},
+				yaxis: { show: false }
 			});
 		}
 	}
 
 	function calculateBarPositions() {
-		const parentContainer = document.querySelector('.main-container');
-		const parentLeft = parentContainer.getBoundingClientRect().left;
-
+		const chartElement = document.querySelector(`#${chartId}`);
 		const bars = document.querySelectorAll(`#${chartId} .apexcharts-bar-area`);
-		barPositions = Array.from(bars).map((bar) => {
+
+		if (!chartElement || bars.length === 0) {
+			barPositions = [];
+			return;
+		}
+
+		const chartRect = chartElement.getBoundingClientRect();
+		const chartWidth = chartRect.width;
+
+		barPositions = Array.from(bars).map((bar, index) => {
 			const rect = bar.getBoundingClientRect();
-			return rect.left - parentLeft + rect.width / 2; // Center of each bar
+			if (bars.length < 3) {
+				return (chartWidth / (bars.length + 1)) * (index + 1) + chartRect.left - chartRect.left;
+			}
+			return rect.left + rect.width / 2 - chartRect.left;
 		});
 	}
 
