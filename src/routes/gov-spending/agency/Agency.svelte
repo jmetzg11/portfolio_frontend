@@ -19,15 +19,17 @@
 
 {#if data && data.mainData}
 	<div class="flex flex-col gap-4 p-4 w-full h-full">
-		<div class="flex flex-col sm:flex-row gap-4 flex-grow">
-			<div class="flex-1 h-[40vh] sm:h-[50vh] md:max-h-[60vh] md:h-auto md:max-w-[600px] mx-auto">
+		<!-- Graph Section -->
+		<div class="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+			<div class="flex-1 h-[40vh] sm:h-[50vh] md:h-[60vh] mx-auto">
 				<PieGraph data={data.mainData} title="Main Agency Spending" />
 			</div>
-			<div class="flex-1 h-[40vh] sm:h-[50vh] md:max-h-[60vh] md:h-auto md:max-w-[600px] mx-auto">
+			<div class="flex-1 h-[40vh] sm:h-[50vh] md:h-[60vh] mx-auto">
 				<PieGraph data={data.otherData} title="Other Agency Spending" />
 			</div>
 		</div>
-		<div class="overflow-y-auto flex-grow">
+		<!-- Table Section -->
+		<div class="overflow-y-auto flex-grow min-h-[250px]">
 			<Table data={data.remainingData} />
 		</div>
 	</div>

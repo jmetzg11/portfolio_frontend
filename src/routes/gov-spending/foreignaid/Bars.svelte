@@ -36,14 +36,47 @@
 						: `$${Number(result.toFixed(2)).toLocaleString('en')} mil`;
 				return formattedValue;
 			},
-			style: { colors: ['#000'], fontWeight: '400' }
+			style: { colors: ['#000'], fontWeight: '400', fontSize: '14px' }
 		},
 		plotOptions: {
 			bar: {
 				horizontal: false,
 				dataLabels: { position: 'top' }
 			}
-		}
+		},
+		responsive: [
+			{
+				breakpoint: 768, // Adjust for smaller screens
+				options: {
+					xaxis: {
+						labels: {
+							style: { fontSize: '12px' } // Smaller font size for axis labels
+						}
+					},
+					dataLabels: {
+						style: { fontSize: '10px' } // Smaller font size for data labels
+					},
+					plotOptions: {
+						bar: {
+							dataLabels: { position: 'top' }
+						}
+					}
+				}
+			},
+			{
+				breakpoint: 480, // Further adjustment for very small screens
+				options: {
+					xaxis: {
+						labels: {
+							style: { fontSize: '10px' } // Even smaller font size
+						}
+					},
+					dataLabels: {
+						style: { fontSize: '8px' } // Smaller font size for data labels
+					}
+				}
+			}
+		]
 	};
 
 	const unsubscribe = barDataStore.subscribe((value) => {
