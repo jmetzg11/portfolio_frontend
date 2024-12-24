@@ -29,8 +29,12 @@
 		dataLabels: {
 			enabled: true,
 			formatter: function (val) {
-				const formattedValue = (val / 1000000).toFixed(2);
-				return `$${Number(formattedValue).toLocaleString('en')} mil`;
+				const result = val / 1000000;
+				const formattedValue =
+					result > 9999
+						? `$${Number(result.toFixed(0)).toLocaleString('en')} mil`
+						: `$${Number(result.toFixed(2)).toLocaleString('en')} mil`;
+				return formattedValue;
 			},
 			style: { colors: ['#000'], fontWeight: '400' }
 		},

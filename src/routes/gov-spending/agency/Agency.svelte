@@ -20,11 +20,11 @@
 {#if data && data.mainData}
 	<div class="flex flex-col gap-4 p-4 w-full h-full">
 		<div class="flex flex-col sm:flex-row gap-4 flex-grow">
-			<div class="flex-1 h-[40vh] md:max-h-[50vh] md:h-auto md:max-w-[600px] mx-auto">
-				<PieGraph data={data.mainData} title={'Main Agency Spending'} />
+			<div class="flex-1 h-[40vh] sm:h-[50vh] md:max-h-[60vh] md:h-auto md:max-w-[600px] mx-auto">
+				<PieGraph data={data.mainData} title="Main Agency Spending" />
 			</div>
-			<div class="flex-1 h-[40vh] md:max-h-[50vh] md:h-auto md:max-w-[600px] mx-auto">
-				<PieGraph data={data.otherData} title={'Other Agency Spending'} />
+			<div class="flex-1 h-[40vh] sm:h-[50vh] md:max-h-[60vh] md:h-auto md:max-w-[600px] mx-auto">
+				<PieGraph data={data.otherData} title="Other Agency Spending" />
 			</div>
 		</div>
 		<div class="overflow-y-auto flex-grow">

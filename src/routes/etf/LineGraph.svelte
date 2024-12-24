@@ -87,7 +87,39 @@
 				tooltip: {
 					enabled: true,
 					theme: 'light', // Use a fixed tooltip rendering style
-					style: { fontSize: '12px' }
+					style: { fontSize: '12px' },
+					custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+						const colors = w.config.colors;
+						const fullSeries = w.config.series.map((s, i) => ({
+							name: s.name,
+							value: s.data[dataPointIndex],
+							color: colors[i]
+						}));
+
+						const sortedSeries = fullSeries
+							.filter((item) => item.value !== null && item.value !== undefined)
+							.sort((a, b) => b.value - a.value);
+
+						const tooltipHTML = sortedSeries
+							.map(
+								(item) => `
+							<div style="display: flex; align-items: center; margin-bottom: 4px;">
+								<div style="width: 10px; height: 10px; background: ${item.color}; margin-right: 8px; border-radius: 50%;"></div>
+								<div style="display: flex; justify-content: space-between; width: 100%;">
+									<span style="font-weight: bold;">${item.name}</span>
+									<span>${selectedButton === 'value' ? `$${item.value.toLocaleString()}` : `${item.value.toLocaleString()}%`}</span>
+								</div>
+							</div>
+						`
+							)
+							.join('');
+
+						return `
+							<div style="padding: 8px; background: #fff; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+								${tooltipHTML}
+							</div>
+						`;
+					}
 				},
 
 				dataLabels: {

@@ -142,4 +142,33 @@
 			{/each}
 		</ul>
 	</div>
+	<div class="w-full max-w-5xl">
+		<div>
+			<div class="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+				Skills
+			</div>
+			<div
+				class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-lg"
+			>
+				<div>
+					<strong>Frontend:</strong> React, Svelte, Redux, Tailwind CSS, Bootstrap
+				</div>
+				<div>
+					<strong>Backend:</strong> Gin, Django, FastAPI, Express
+				</div>
+				<div>
+					<strong>DevOps:</strong> AWS, Docker, Git
+				</div>
+				<div>
+					<strong>Languages:</strong> Python, JavaScript, TypeScript, Go, Rust
+				</div>
+				<div>
+					<strong>Databases:</strong> PostgreSQL, MySQL, MongoDB
+				</div>
+				<div>
+					<strong>Other:</strong> Russian, Spanish, BJJ, Dogs
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

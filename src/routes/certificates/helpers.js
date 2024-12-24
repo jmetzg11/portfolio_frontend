@@ -1,5 +1,11 @@
 export const data = [
 	{
+		name: 'MIT - Data Science and Machine Learning',
+		date: 'Dec 2024',
+		img: '/mit_data_science.jpg',
+		description: 'Curriculum convers Data Science and ML skills needed to create business impact'
+	},
+	{
 		name: 'DataCamp - Data Scientist Professional Certificate',
 		date: 'Nov 2021',
 		img: '/DataCamp_professional.jpg',

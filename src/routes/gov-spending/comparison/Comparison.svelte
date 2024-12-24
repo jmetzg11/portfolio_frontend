@@ -1,5 +1,5 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import ApexCharts from 'apexcharts';
 	import { colors } from './helpers';
 
@@ -8,13 +8,22 @@
 	let agencies = [];
 	let chartId = 'line-graph';
 	let chart = null;
+	let chartHeight = 0;
+
+	function calculateChartHeight() {
+		chartHeight = Math.max(window.innerHeight * 0.7, 300);
+	}
+
 	onMount(async () => {
+		calculateChartHeight();
+		window.addEventListener('resize', calculateChartHeight);
+
 		try {
-			const resposne = await fetch(`${import.meta.env.VITE_BACKEND_URL}/gov/comparison`);
-			if (!resposne.ok) {
-				throw Error('Falied to fetch comparison data');
+			const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/gov/comparison`);
+			if (!response.ok) {
+				throw Error('Failed to fetch comparison data');
 			}
-			const data = await resposne.json();
+			const data = await response.json();
 			lineData = data.data;
 			xLabels = data.years;
 			agencies = data.agencies;
@@ -22,6 +31,10 @@
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
+
+		return () => {
+			window.removeEventListener('resize', calculateChartHeight);
+		};
 	});
 
 	function renderChart() {
@@ -33,6 +46,7 @@
 		const options = {
 			chart: {
 				type: 'line',
+				height: chartHeight,
 				toolbar: { show: false }
 			},
 			series: series,
@@ -59,7 +73,20 @@
 			legend: {
 				show: true,
 				position: 'top'
-			}
+			},
+			responsive: [
+				{
+					breakpoint: 768,
+					options: {
+						chart: {
+							height: '300px'
+						},
+						legend: {
+							position: 'bottom'
+						}
+					}
+				}
+			]
 		};
 
 		chart = new ApexCharts(document.getElementById(chartId), options);
@@ -67,6 +94,4 @@
 	}
 </script>
 
-<div id={chartId}></div>
-
-<style></style>
+<div id={chartId} class="w-full"></div>
