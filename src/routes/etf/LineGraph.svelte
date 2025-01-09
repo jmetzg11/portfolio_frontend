@@ -14,6 +14,8 @@
 		selectedButton = buttonValue;
 	}
 
+	$: console.log($transactionStore);
+
 	$: {
 		const groupedData = {};
 		const allDates = new Set();
@@ -24,6 +26,7 @@
 
 				allDates.add(
 					new Date(date).toLocaleString('en-us', {
+						year: 'numeric',
 						month: 'short',
 						day: '2-digit',
 						timeZone: 'UTC'
@@ -36,6 +39,7 @@
 
 				groupedData[stock].push({
 					date: new Date(date).toLocaleDateString('en-us', {
+						year: 'numeric',
 						month: 'short',
 						day: '2-digit',
 						timeZone: 'UTC'
